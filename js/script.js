@@ -273,5 +273,34 @@
   // Evita erros se as imagens do slider estiverem indisponíveis; a imagem seguinte continua.
   slides.forEach(slide => slide.addEventListener('error', () => {
     slide.classList.add('image-missing');
-  }));
+  })); 
+  
+  // Efeito de escrita no texto do banner
+  const typingElement = $('.hero h1');
+
+  if (typingElement && !reducedMotion) {
+    const originalText = typingElement.textContent.trim();
+    typingElement.textContent = '';
+
+    const typingSpan = document.createElement('span');
+    typingSpan.className = 'typing-text';
+    typingElement.appendChild(typingSpan);
+
+    let characterIndex = 0;
+
+const typeNextCharacter = () => {
+  if (characterIndex < originalText.length) {
+    typingSpan.textContent += originalText.charAt(characterIndex);
+    characterIndex++;
+    window.setTimeout(typeNextCharacter, 120);
+  } else {
+    typingSpan.classList.add('typing-done');
+  }
+};
+
+
+    typeNextCharacter(); 
+    
+  }
+
 })();

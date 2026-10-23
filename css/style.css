@@ -418,4 +418,44 @@ p { text-wrap: pretty; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
   .hero-slide { transform: none; }
+} 
+
+/* Animação de escrita no banner */
+.hero .typing-text {
+  display: inline;
+  border-right: 3px solid var(--gold);
+  padding-right: 4px;
+  white-space: normal;
+  animation: cursorTyping 0.8s step-end infinite;
 }
+
+@keyframes cursorTyping {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .typing-text {
+    animation: none;
+    border-right: none;
+  }
+}
+
+/* Cursor desaparece no fim da escrita */
+.hero .typing-text {
+  border-right: 3px solid var(--gold);
+  animation: cursorTyping 0.8s step-end infinite;
+}
+
+.hero .typing-text.typing-done {
+  border-right-color: transparent;
+  animation: none;
+}
+
+@keyframes cursorTyping {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
