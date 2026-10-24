@@ -12,11 +12,27 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/curso.css">
   <style>
-    .products-hero{background:var(--paper);padding:34px 0 28px;border-bottom:1px solid var(--line)}
-    .breadcrumbs{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:.86rem;margin-bottom:18px}
-    .breadcrumbs a:hover{color:#a67b00}
-    .products-hero h1{font:800 clamp(2rem,4vw,3.1rem)/1.15 Manrope,sans-serif;letter-spacing:-.04em;margin:0;color:var(--ink)}
-    .products-hero p{color:var(--muted);margin:12px 0 0;max-width:620px}
+    .products-hero{position:relative;isolation:isolate;min-height:clamp(420px,52vw,650px);display:flex;align-items:center;overflow:hidden;background:#082d20;border-bottom:1px solid #c5a14a}
+    .products-hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+    .products-hero-media img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 53%;animation:heroKenBurns 22s ease-in-out infinite alternate;transform-origin:center}
+    .products-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,25,18,.94) 0%,rgba(3,25,18,.83) 27%,rgba(3,25,18,.42) 52%,rgba(3,25,18,.08) 100%),linear-gradient(0deg,rgba(3,25,18,.25),transparent 45%)}
+    .products-hero:after{content:"";position:absolute;inset:-30% auto -30% -25%;width:18%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,222,128,.17),transparent);animation:heroLightSweep 8s ease-in-out infinite;pointer-events:none}
+    .products-hero .container{position:relative;padding-top:70px;padding-bottom:78px;animation:heroTextEnter .9s cubic-bezier(.2,.7,.2,1) both}
+    .breadcrumbs{display:flex;gap:9px;align-items:center;color:#e0e4dc;font-size:.86rem;margin-bottom:25px}
+    .breadcrumbs a{color:#f6c01f;text-decoration:none}.breadcrumbs a:hover{color:#fff}
+    .products-hero h1{font:800 clamp(2.7rem,6.5vw,5.8rem)/.98 Manrope,sans-serif;letter-spacing:-.055em;margin:0;color:#fff;max-width:690px;text-shadow:0 5px 30px #0005}
+    .products-hero h1 span{display:block;color:#f6c01f;font-family:Georgia,serif;font-style:italic;font-weight:700;letter-spacing:-.04em}
+    .products-hero p{color:#f0f2ec;margin:24px 0 0;max-width:520px;font-size:clamp(1rem,1.45vw,1.16rem);line-height:1.75}
+    .hero-features{display:flex;flex-wrap:wrap;gap:22px;margin-top:26px;color:#fff;font-size:.86rem}
+    .hero-feature{display:flex;align-items:center;gap:9px}.hero-feature i{font-size:1.35rem;color:#f6c01f}
+    .hero-cta{display:inline-flex;align-items:center;gap:12px;margin-top:30px;padding:15px 24px;border-radius:999px;background:#f6c01f;color:#1f2c32;text-decoration:none;font-weight:800;box-shadow:0 12px 30px #0002;transition:transform .25s,box-shadow .25s,background .25s}
+    .hero-cta:hover{transform:translateY(-4px);background:#ffda64;box-shadow:0 18px 35px #0004}
+    .hero-motion-label{position:absolute;right:5%;bottom:28px;color:#fff9;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+    .hero-motion-label:before{content:"";width:42px;height:1px;background:#f6c01f;animation:heroLinePulse 2s ease-in-out infinite}
+    @keyframes heroKenBurns{0%{transform:scale(1)}100%{transform:scale(1.09) translate3d(-1.2%,.5%,0)}}
+    @keyframes heroTextEnter{from{opacity:0;transform:translate3d(0,28px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+    @keyframes heroLightSweep{0%,20%{left:-25%;opacity:0}35%{opacity:1}70%,100%{left:115%;opacity:0}}
+    @keyframes heroLinePulse{0%,100%{opacity:.45;transform:scaleX(.65);transform-origin:left}50%{opacity:1;transform:scaleX(1);transform-origin:left}}
     .products-layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:32px;padding-top:38px;padding-bottom:78px}
     .filter-panel{border:1px solid var(--line);border-radius:18px;padding:22px;height:max-content;position:sticky;top:105px;background:#fff}
     .filter-panel h2{font:800 1.05rem Manrope,sans-serif;margin:0 0 19px}
@@ -68,9 +84,9 @@
     .empty-state i{font-size:2rem;color:#b98a00;margin-bottom:12px}
     .empty-state h2{font:800 1.2rem Manrope,sans-serif;color:var(--ink);margin:0 0 6px}
     @media(max-width:1000px){.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.products-layout{grid-template-columns:215px minmax(0,1fr);gap:22px}}
-    @media(max-width:700px){.products-layout{grid-template-columns:1fr;padding-top:24px}.filter-panel{position:static}.products-toolbar{align-items:stretch;flex-direction:column}.toolbar-right{justify-content:space-between}.search-wrap{max-width:none}.products-grid{gap:14px}.product-info{padding:14px}.product-info h2{font-size:1rem}.product-price{font-size:1.1rem}.product-buy{font-size:.85rem}.products-hero{padding-top:26px}}
+    @media(max-width:700px){.products-layout{grid-template-columns:1fr;padding-top:24px}.filter-panel{position:static}.products-toolbar{align-items:stretch;flex-direction:column}.toolbar-right{justify-content:space-between}.search-wrap{max-width:none}.products-grid{gap:14px}.product-info{padding:14px}.product-info h2{font-size:1rem}.product-price{font-size:1.1rem}.product-buy{font-size:.85rem}.products-hero{min-height:510px}.products-hero .container{padding-top:48px;padding-bottom:64px}.products-hero:before{background:linear-gradient(90deg,rgba(3,25,18,.91),rgba(3,25,18,.63)),linear-gradient(0deg,rgba(3,25,18,.3),transparent)}.products-hero-media img{object-position:62% center}.products-hero h1{font-size:clamp(2.6rem,12vw,4.3rem)}.products-hero p{max-width:430px}.hero-features{gap:13px}.hero-feature{font-size:.78rem}.hero-motion-label{right:20px;bottom:18px;font-size:.6rem}}
     @media(max-width:420px){.products-grid{grid-template-columns:1fr}.toolbar-right{align-items:flex-start;flex-direction:column}.sort-select{width:100%}}
-    @media(prefers-reduced-motion:reduce){.product-card,.product-buy{transition:none}}
+    @media(prefers-reduced-motion:reduce){.product-card,.product-buy,.hero-cta{transition:none}.products-hero-media img,.products-hero .container,.products-hero:after,.hero-motion-label:before{animation:none!important}}
   </style>
 </head>
 <body>
@@ -88,12 +104,20 @@
     </div>
   </header>
   <main>
-    <section class="products-hero">
+    <section class="products-hero" aria-label="Destaque dos produtos Language Hours">
+      <div class="products-hero-media" aria-hidden="true"><img src="img/banner-produtos.jpeg" alt="" fetchpriority="high"></div>
       <div class="container">
         <div class="breadcrumbs"><a href="home.html">Página inicial</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span>All Products</span></div>
-        <h1>Todos os produtos</h1>
-        <p>Explora os bundles da Language Hours e escolhe o recurso de aprendizagem ideal para o teu nível de inglês.</p>
+        <h1>Os nossos <span>Produtos</span></h1>
+        <p>A combinação perfeita entre audiobooks e workbooks para te ajudar a aprender inglês de forma prática, envolvente e eficaz.</p>
+        <div class="hero-features" aria-label="Vantagens dos produtos">
+          <div class="hero-feature"><i class="fa-solid fa-headphones" aria-hidden="true"></i><span>Audiobooks<br>com narração nativa</span></div>
+          <div class="hero-feature"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Workbooks<br>com exercícios práticos</span></div>
+          <div class="hero-feature"><i class="fa-solid fa-chart-column" aria-hidden="true"></i><span>Todos os níveis<br>de proficiência</span></div>
+        </div>
+        <a class="hero-cta" href="#produtos">Explorar produtos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
+      <div class="hero-motion-label" aria-hidden="true">Aprende · Pratica · Evolui</div>
     </section>
     <section class="container products-layout" id="produtos" aria-label="Catálogo de produtos">
       <aside class="filter-panel" aria-label="Filtros de produtos">
