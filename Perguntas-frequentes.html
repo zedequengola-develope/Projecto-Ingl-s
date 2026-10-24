@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Encontra respostas às perguntas frequentes sobre os cursos, método de ensino, matrícula e pagamentos da Language Hours.">
+<meta name="theme-color" content="#1f2c32">
+<title>Perguntas Frequentes — Language Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/curso.css">
+<style>
+/* Estilos específicos desta página: mesma paleta e linguagem visual do site original. */
+.about-hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:88px 0 82px}
+.about-hero:before,.about-hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.about-hero:before{width:420px;height:420px;right:-120px;top:-190px;border:1px solid #f6c01f45;background:#f6c01f10}
+.about-hero:after{width:250px;height:250px;right:18%;bottom:-190px;border:1px solid #ffffff20}
+.about-hero .container{position:relative;z-index:1}
+.about-hero h1{font-family:Manrope,sans-serif;font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.08;letter-spacing:-.045em;margin:17px 0}
+.about-hero h1 em{font-style:normal;color:var(--gold)}
+.about-hero p{max-width:680px;color:#d5dcde;font-size:1.08rem;margin:0}
+.about-intro{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.about-panel{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(24px,4vw,38px);background:#fff;box-shadow:0 8px 28px #1f2c3208}
+.about-panel.mission{background:var(--paper)}
+.about-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:var(--ink);color:var(--gold);font-size:1.3rem;margin-bottom:20px}
+.about-panel h2,.values-heading h2{font-family:Manrope,sans-serif;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:0 0 13px;letter-spacing:-.03em}
+.about-panel p{color:var(--muted);margin:0}
+.values-heading{text-align:center;max-width:700px;margin:0 auto 34px}
+.values-heading p{color:var(--muted);margin:12px auto 0}
+.values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.value-card{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:transform .22s,border-color .22s,box-shadow .22s}
+.value-card:hover{transform:translateY(-5px);border-color:#e8c34d;box-shadow:var(--shadow)}
+.value-card .about-icon{width:46px;height:46px;border-radius:14px;margin-bottom:16px}
+.value-card h3{font-family:Manrope,sans-serif;font-size:1.12rem;margin:0 0 8px}
+.value-card p{font-size:.96rem;color:var(--muted);margin:0}
+.about-cta{background:var(--gold);padding:38px 0}
+.about-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.about-cta h2{font-family:Manrope,sans-serif;font-size:clamp(1.45rem,3vw,2rem);margin:0 0 5px}
+.about-cta p{margin:0;color:#3e4546}
+.about-cta .btn{background:var(--ink);color:#fff;white-space:nowrap}
+.about-cta .btn:hover{box-shadow:0 10px 24px #1f2c3230}
+.footer-social-copy{color:#aeb9bc}
+@media(max-width:800px){.about-intro{grid-template-columns:1fr}.values-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.about-hero{padding:66px 0 60px}.values-grid{grid-template-columns:1fr}.about-cta-inner{align-items:flex-start;flex-direction:column}.about-cta .btn{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.value-card{transition:none}.value-card:hover{transform:none}}
+</style>
+
+<style>
+.faq-hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:82px 0 76px}
+.faq-hero:before,.faq-hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.faq-hero:before{width:420px;height:420px;right:-120px;top:-190px;border:1px solid #f6c01f45;background:#f6c01f10}
+.faq-hero:after{width:250px;height:250px;right:18%;bottom:-190px;border:1px solid #ffffff20}
+.faq-hero .container{position:relative;z-index:1}
+.faq-hero h1{font-family:Manrope,sans-serif;font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.08;letter-spacing:-.045em;margin:17px 0}
+.faq-hero h1 em{font-style:normal;color:var(--gold)}
+.faq-hero p{max-width:700px;color:#d5dcde;font-size:1.08rem;margin:0}
+.faq-content{max-width:900px;margin:0 auto}
+.faq-list{display:grid;gap:14px}
+.faq-item{border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;box-shadow:0 8px 28px #1f2c3208;transition:border-color .2s,box-shadow .2s}
+.faq-item[open]{border-color:#e8c34d;box-shadow:var(--shadow)}
+.faq-question{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:22px 24px;font-family:Manrope,sans-serif;font-weight:800;color:var(--ink);font-size:1.04rem}
+.faq-question::-webkit-details-marker{display:none}
+.faq-question:focus-visible{outline:3px solid #f6c01f;outline-offset:-4px;border-radius:var(--radius)}
+.faq-q-icon{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;background:var(--paper);color:var(--ink);border-radius:12px}
+.faq-chevron{margin-left:auto;color:var(--muted);transition:transform .2s}
+.faq-item[open] .faq-chevron{transform:rotate(180deg);color:var(--ink)}
+.faq-answer{padding:0 24px 24px 80px;color:var(--muted)}
+.faq-answer p{margin:0 0 12px}.faq-answer p:last-child{margin-bottom:0}
+.faq-answer ol{padding-left:21px;margin:12px 0 0}.faq-answer li{padding-left:4px;margin:0 0 9px}.faq-answer li::marker{color:var(--ink);font-weight:800}
+.faq-answer strong{color:var(--ink)}
+.faq-cta{background:var(--gold);padding:38px 0}.faq-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.faq-cta h2{font-family:Manrope,sans-serif;font-size:clamp(1.45rem,3vw,2rem);margin:0 0 5px}.faq-cta p{margin:0;color:#3e4546}.faq-cta .btn{background:var(--ink);color:#fff;white-space:nowrap}
+@media(max-width:650px){.faq-hero{padding:65px 0 58px}.faq-question{padding:18px 16px;gap:12px;font-size:1rem}.faq-q-icon{flex-basis:34px;width:34px;height:34px}.faq-answer{padding:0 18px 20px 62px}.faq-cta-inner{align-items:flex-start;flex-direction:column}.faq-cta .btn{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.faq-item,.faq-chevron{transition:none}}
+</style>
+</head>
+<body>
+<header class="header" id="inicio">
+ <div class="container nav">
+  <a aria-label="Language Hours, página inicial" class="brand" href="Curso.html"><span class="brand-mark"><i aria-hidden="true" class="fa-solid fa-language"></i></span><span>Language Hours</span></a>
+  <nav aria-label="Navegação principal" class="nav-links" id="navLinks">
+         <a href="#">Inicio</a> 
+        <a href="Curso.html">Cursos</a> 
+        <a href="Sobre.html">Sobre Nós</a>
+        <a href="Perguntas-frequentes.html">Perguntas Frequentes</a>
+        <a href="#faq">Portal do Estudante</a> 
+         <a href="#contacto">Produtos</a>
+  </nav>
+  <div class="nav-actions"><a class="btn btn-gold" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Language%20Hours.">Começar agora <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
+   <button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle" type="button"><i aria-hidden="true" class="fa-solid fa-bars"></i></button>
+  </div>
+ </div>
+</header>
+<main>
+ <section class="faq-hero"><div class="container">
+  <span class="eyebrow">Estamos aqui para ajudar</span>
+  <h1>Perguntas <em>Frequentes</em></h1>
+  <p>Encontra respostas sobre o nosso método, os cursos, a matrícula e os pagamentos. Se precisares de mais ajuda, a nossa equipa está disponível para te acompanhar.</p>
+  <div class="hero-pills" style="margin-top:25px"><span><i class="fa-solid fa-circle-check"></i> Informação clara</span><span><i class="fa-solid fa-graduation-cap"></i> Cursos online</span><span><i class="fa-solid fa-headset"></i> Apoio ao estudante</span></div>
+ </div></section>
+ <section class="section section-soft"><div class="container faq-content">
+  <div class="section-heading"><span class="section-kicker">Tira as tuas dúvidas</span><h2>Como podemos ajudar?</h2><p>Seleciona uma pergunta para ver a resposta.</p></div>
+  <div class="faq-list" id="faqList">
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span><span>Como funciona o método da Language Hours?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Nosso método foca na aquisição natural da língua, priorizando a compreensão e conversação real em vez da memorização de regras gramaticais cansativas.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span><span>Preciso ter conhecimento prévio de inglês?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Não, temos programas adaptados para todos os níveis, desde o iniciante absoluto até aqueles que já possuem alguma base e desejam fluência.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span><span>Quanto tempo dura o curso?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Ainda que o progresso seja constante, acreditamos que em apenas 4 meses de dedicação absoluta você atingirá uma evolução significativa para subir de nível na sua confiança e compreensão.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span><span>As aulas são presenciais ou online?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Todas as aulas da Language Hours são 100% online, permitindo que estude a partir de qualquer lugar do mundo. Basta ter uma ligação à internet e um computador, tablet ou telemóvel para participar nas aulas ao vivo.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span><span>Como posso me matricular?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Segue estes passos para começares:</p><ol><li>Clica em <strong>“Começar”</strong> — serás direcionado para o teste de nivelamento de inglês.</li><li>Faz o teste de nivelamento — após concluir, serás direcionado para a página de planos.</li><li>Escolhe o teu plano ideal — clica em <strong>“Quero este plano”</strong> para avançar.</li><li>Preenche a ficha de inscrição — após selecionar o plano, serás direcionado para a página de inscrição.</li><li>Entra em contacto com a equipa de suporte através do número do teu assistente de estudante, apresentado após a inscrição, para escolher o teu horário.</li><li>Efetua o pagamento e envia o comprovativo de pagamento à equipa de suporte.</li><li>Entra na nossa comunidade do WhatsApp — após a confirmação do pagamento, serás adicionado à tua turma e receberás todas as informações necessárias para começar as aulas.</li></ol></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-wallet" aria-hidden="true"></i></span><span>Quais são as formas de pagamento?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Oferecemos formas de pagamento flexíveis para estudantes em Angola e no estrangeiro.</p><p><strong>Estudantes em Angola:</strong> pagamento por IBAN (transferência bancária).</p><p><strong>Estudantes internacionais:</strong> pagamento através de Wise ou PayPal.</p><p>Caso tenhas alguma dúvida sobre o pagamento, a nossa equipa estará disponível para ajudar.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span><span>Vocês emitem certificado de conclusão?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Sim, ao finalizar cada nível de proficiência, os nossos alunos recebem um certificado comprovando a sua evolução e as horas de estudo dedicadas.</p></div></details>
+   <details class="faq-item"><summary class="faq-question"><span class="faq-q-icon"><i class="fa-solid fa-pause-circle" aria-hidden="true"></i></span><span>Posso trancar o curso se precisar?</span><i class="fa-solid fa-chevron-down faq-chevron" aria-hidden="true"></i></summary><div class="faq-answer"><p>Entendemos imprevistos. Oferecemos políticas flexíveis de trancamento para que possas retomar os teus estudos sem perder o teu progresso quando estiveres pronto.</p></div></details>
+  </div>
+ </div></section>
+ <section class="faq-cta"><div class="container faq-cta-inner"><div><h2>Ainda tens alguma dúvida?</h2><p>Fala com a nossa equipa e recebe o apoio de que precisas.</p></div><a class="btn" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20a%20Language%20Hours.">Falar connosco <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></div></section>
+</main>
+<footer class="footer" id="contacto"><div class="container"><div class="footer-top">
+ <div class="footer-about"><a class="brand footer-brand" href="Curso.html"><span class="brand-mark"><i class="fa-solid fa-language"></i></span><span>Language <b>Hours</b></span></a><p>Aprende hoje, comunica amanhã. Desenvolve as tuas competências de inglês com uma abordagem prática e orientada para os teus objetivos.</p><a class="footer-badge" href="mailto:languaguehours@gmail.com"><i class="fa-solid fa-envelope"></i> languaguehours@gmail.com</a><a class="footer-badge" href="https://wa.me/244954858822"><i class="fa-brands fa-whatsapp"></i> +244 954 858 822</a></div>
+ <div class="footer-col"><h3>Explorar</h3><a href="Curso.html">Planos e Cursos</a><a href="Sobre-nos.html">Sobre Nós</a><a href="Perguntas-frequentes.html">Perguntas Frequentes</a></div>
+ <div class="footer-col"><h3>Contacto</h3><a href="mailto:languaguehours@gmail.com">Enviar e-mail</a><a href="https://wa.me/244954858822">WhatsApp</a><a href="#inicio">Voltar ao início</a></div>
+ <div class="footer-col"><h3>Siga-nos</h3><p class="footer-social-copy">Acompanha a Language Hours nas redes sociais.</p><div class="socials"><a aria-label="Instagram" href="#"><i class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a><a aria-label="YouTube" href="#"><i class="fa-brands fa-youtube"></i></a></div></div>
+ </div><div class="footer-bottom"><span>© 2026 Language Hours. Todos os direitos reservados.</span><a href="#inicio">Feito para aprender <i class="fa-solid fa-heart"></i></a></div></div></footer>
+<script>
+(()=>{const toggle=document.getElementById('menuToggle'),nav=document.getElementById('navLinks');const setMenu=open=>{if(!toggle||!nav)return;nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');toggle.innerHTML=open?'<i class="fa-solid fa-xmark" aria-hidden="true"></i>':'<i class="fa-solid fa-bars" aria-hidden="true"></i>';document.body.classList.toggle('menu-open',open&&matchMedia('(max-width:700px)').matches)};if(toggle&&nav){toggle.addEventListener('click',()=>setMenu(toggle.getAttribute('aria-expanded')!=='true'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});window.addEventListener('resize',()=>{if(innerWidth>700)setMenu(false)})}document.querySelectorAll('.faq-item').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)document.querySelectorAll('.faq-item').forEach(other=>{if(other!==item)other.open=false})}));})();
+</script>
+</body>
+</html>

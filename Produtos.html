@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Descobre todos os produtos e bundles de inglês da Language Hours.">
+  <meta name="theme-color" content="#1f2c32">
+  <title>Todos os produtos — Language Hours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/curso.css">
+  <style>
+    .products-hero{background:var(--paper);padding:34px 0 28px;border-bottom:1px solid var(--line)}
+    .breadcrumbs{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:.86rem;margin-bottom:18px}
+    .breadcrumbs a:hover{color:#a67b00}
+    .products-hero h1{font:800 clamp(2rem,4vw,3.1rem)/1.15 Manrope,sans-serif;letter-spacing:-.04em;margin:0;color:var(--ink)}
+    .products-hero p{color:var(--muted);margin:12px 0 0;max-width:620px}
+    .products-layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:32px;padding-top:38px;padding-bottom:78px}
+    .filter-panel{border:1px solid var(--line);border-radius:18px;padding:22px;height:max-content;position:sticky;top:105px;background:#fff}
+    .filter-panel h2{font:800 1.05rem Manrope,sans-serif;margin:0 0 19px}
+    .filter-label{display:block;font-weight:700;font-size:.9rem;margin-bottom:10px}
+    .filter-group{padding:18px 0;border-top:1px solid var(--line)}
+    .filter-group:first-of-type{border-top:0;padding-top:0}
+    .filter-select,.search-input,.sort-select{width:100%;border:1px solid #dce2df;background:#fff;border-radius:11px;padding:12px 13px;font:inherit;color:var(--ink);outline:none}
+    .filter-select:focus,.search-input:focus,.sort-select:focus{border-color:#d4a600;box-shadow:0 0 0 3px #f6c01f25}
+    .price-range{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted);margin:0 0 12px}
+    .price-slider{width:100%;accent-color:var(--gold);cursor:pointer}
+    .price-options{display:grid;gap:11px;margin-top:14px}
+    .price-options label{display:flex;align-items:center;gap:9px;font-size:.9rem;cursor:pointer}
+    .price-options input{accent-color:var(--ink);width:16px;height:16px}
+    .clear-filters{border:0;background:transparent;padding:10px 0 0;color:#8b6800;font-weight:700;cursor:pointer;font-size:.86rem}
+    .products-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .results-count{font-weight:700;font-size:.92rem}
+    .toolbar-right{display:flex;align-items:center;gap:10px}
+    .toolbar-right label{font-size:.87rem;color:var(--muted);white-space:nowrap}
+    .sort-select{width:auto;min-width:165px;padding:10px 12px}
+    .search-wrap{position:relative;flex:1;max-width:350px}
+    .search-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .search-input{padding-left:40px}
+    .products-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .product-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0;transition:transform .22s,box-shadow .22s,border-color .22s}
+    .product-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #1f2c3212;border-color:#e8cf72}
+    .product-art{height:190px;background:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:20px;color:white}
+    .product-art:before,.product-art:after{content:"";position:absolute;border:1px solid #f6c01f55;border-radius:50%;pointer-events:none}
+    .product-art:before{width:210px;height:210px;right:-65px;top:-82px}
+    .product-art:after{width:150px;height:150px;right:-35px;top:-52px}
+    .product-art.bundle-mega{background:linear-gradient(135deg,#1f2c32,#35454a)}
+    .product-art.bundle-b2{background:linear-gradient(135deg,#25363c,#46616a)}
+    .product-art.bundle-b1{background:linear-gradient(135deg,#2d3b41,#5b6a6e)}
+    .product-art.bundle-a2{background:linear-gradient(135deg,#28363b,#6b7779)}
+    .product-art.bundle-a0{background:linear-gradient(135deg,#202e34,#52666b)}
+    .product-art.bundle-a1{background:linear-gradient(135deg,#26383e,#7b8989)}
+    .product-art-top,.product-art-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .mini-brand{font:700 .72rem Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .product-level{font-size:.72rem;font-weight:700;color:var(--gold);border:1px solid #f6c01f88;border-radius:999px;padding:5px 9px}
+    .product-art-title{position:relative;z-index:1;font:800 clamp(1.7rem,2.2vw,2.35rem)/1 Manrope,sans-serif;letter-spacing:-.05em;max-width:85%;margin:0}
+    .product-art-title span{color:var(--gold)}
+    .product-art-bottom{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#d4ddde}
+    .product-info{padding:18px;display:flex;flex-direction:column;flex:1}
+    .product-info h2{font:800 1.12rem Manrope,sans-serif;margin:0 0 8px}
+    .product-type{font-size:.83rem;color:var(--muted);margin:0 0 18px}
+    .product-price-label{font-size:.78rem;color:var(--muted);margin-bottom:2px}
+    .product-price{font:800 1.25rem Manrope,sans-serif;margin:0 0 16px}
+    .product-buy{width:100%;margin-top:auto;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:11px 14px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:9px;font-weight:700;transition:background .2s,color .2s,transform .2s}
+    .product-buy:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);transform:translateY(-1px)}
+    .empty-state{grid-column:1/-1;border:1px dashed #cbd3d0;border-radius:18px;padding:38px;text-align:center;color:var(--muted)}
+    .empty-state i{font-size:2rem;color:#b98a00;margin-bottom:12px}
+    .empty-state h2{font:800 1.2rem Manrope,sans-serif;color:var(--ink);margin:0 0 6px}
+    @media(max-width:1000px){.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.products-layout{grid-template-columns:215px minmax(0,1fr);gap:22px}}
+    @media(max-width:700px){.products-layout{grid-template-columns:1fr;padding-top:24px}.filter-panel{position:static}.products-toolbar{align-items:stretch;flex-direction:column}.toolbar-right{justify-content:space-between}.search-wrap{max-width:none}.products-grid{gap:14px}.product-art{height:155px;padding:15px}.product-info{padding:14px}.product-info h2{font-size:1rem}.product-price{font-size:1.1rem}.product-buy{font-size:.85rem}.products-hero{padding-top:26px}}
+    @media(max-width:420px){.products-grid{grid-template-columns:1fr}.product-art{height:185px}.toolbar-right{align-items:flex-start;flex-direction:column}.sort-select{width:100%}}
+    @media(prefers-reduced-motion:reduce){.product-card,.product-buy{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="header" id="inicio">
+    <div class="container nav">
+      <a aria-label="Language Hours, página inicial" class="brand" href="home.html#inicio"><span class="brand-mark"><i aria-hidden="true" class="fa-solid fa-language"></i></span><span>Language Hours</span></a>
+      <nav aria-label="Navegação principal" class="nav-links" id="navLinks">
+        <a href="#">Inicio</a> 
+        <a href="Curso.html">Cursos</a> 
+        <a href="Sobre.html">Sobre Nós</a>
+        <a href="Perguntas-frequentes.html">Perguntas Frequentes</a>
+        <a href="#faq">Portal do Estudante</a> 
+         <a href="Produtos.html">Produtos</a>
+      </nav>
+      <div class="nav-actions"><a class="btn btn-gold" href="#produtos">Ver produtos <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a><button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle" type="button"><i aria-hidden="true" class="fa-solid fa-bars"></i></button></div>
+    </div>
+  </header>
+  <main>
+    <section class="products-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="home.html">Página inicial</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span>All Products</span></div>
+        <h1>Todos os produtos</h1>
+        <p>Explora os bundles da Language Hours e escolhe o recurso de aprendizagem ideal para o teu nível de inglês.</p>
+      </div>
+    </section>
+    <section class="container products-layout" id="produtos" aria-label="Catálogo de produtos">
+      <aside class="filter-panel" aria-label="Filtros de produtos">
+        <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i> Filtrar produtos</h2>
+        <div class="filter-group">
+          <label class="filter-label" for="categoryFilter">Buscar por</label>
+          <select class="filter-select" id="categoryFilter"><option value="all">Todos os produtos</option><option value="mega">MEGA BUNDLE</option><option value="b2">LH B2 Bundle</option><option value="b1">LH B1 Bundle</option><option value="a2">LH A2 Bundle</option><option value="a0">LH A0 Bundle</option><option value="a1">LH A1 Bundle</option></select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Preço</span>
+          <div class="price-range"><span>AOA 5.000</span><span id="maxPriceLabel">AOA 15.000</span></div>
+          <input class="price-slider" id="maxPrice" type="range" min="5000" max="15000" step="5000" value="15000" aria-label="Preço máximo">
+          <div class="price-options">
+            <label><input type="checkbox" name="price" value="5000" checked> AOA 5.000</label>
+            <label><input type="checkbox" name="price" value="15000" checked> AOA 15.000</label>
+          </div>
+          <button class="clear-filters" type="button" id="clearFilters"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Limpar filtros</button>
+        </div>
+      </aside>
+      <div class="products-main">
+        <div class="products-toolbar">
+          <div class="search-wrap"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input class="search-input" id="productSearch" type="search" placeholder="Buscar produtos..." aria-label="Buscar por nome do produto"></div>
+          <div class="toolbar-right"><span class="results-count" id="resultsCount" aria-live="polite">6 produtos</span><label for="sortProducts">Ordenar:</label><select class="sort-select" id="sortProducts"><option value="recommended">Recomendado</option><option value="price-asc">Preço: menor para maior</option><option value="price-desc">Preço: maior para menor</option><option value="name">Nome: A–Z</option></select></div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <article class="product-card" data-name="MEGA BUNDLE" data-category="mega" data-price="15000" data-order="0"><div class="product-art bundle-mega"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">MEGA</span></div><h2 class="product-art-title">MEGA <span>BUNDLE</span></h2><div class="product-art-bottom"><span>Learn · Practise · Grow</span><i class="fa-solid fa-bolt"></i></div></div><div class="product-info"><h2>MEGA BUNDLE</h2><p class="product-type">Bundle completo de aprendizagem</p><span class="product-price-label">Preço</span><p class="product-price">15 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MEGA%20BUNDLE." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+          <article class="product-card" data-name="LH B2 Bundle" data-category="b2" data-price="5000" data-order="1"><div class="product-art bundle-b2"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">B2</span></div><h2 class="product-art-title">LH <span>B2</span></h2><div class="product-art-bottom"><span>English bundle</span><i class="fa-solid fa-book-open"></i></div></div><div class="product-info"><h2>LH B2 Bundle</h2><p class="product-type">Bundle de inglês · nível B2</p><span class="product-price-label">Preço</span><p class="product-price">5 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20LH%20B2%20Bundle." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+          <article class="product-card" data-name="LH B1 Bundle" data-category="b1" data-price="5000" data-order="2"><div class="product-art bundle-b1"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">B1</span></div><h2 class="product-art-title">LH <span>B1</span></h2><div class="product-art-bottom"><span>English bundle</span><i class="fa-solid fa-book-open"></i></div></div><div class="product-info"><h2>LH B1 Bundle</h2><p class="product-type">Bundle de inglês · nível B1</p><span class="product-price-label">Preço</span><p class="product-price">5 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20LH%20B1%20Bundle." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+          <article class="product-card" data-name="LH A2 Bundle" data-category="a2" data-price="5000" data-order="3"><div class="product-art bundle-a2"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">A2</span></div><h2 class="product-art-title">LH <span>A2</span></h2><div class="product-art-bottom"><span>English bundle</span><i class="fa-solid fa-book-open"></i></div></div><div class="product-info"><h2>LH A2 Bundle</h2><p class="product-type">Bundle de inglês · nível A2</p><span class="product-price-label">Preço</span><p class="product-price">5 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20LH%20A2%20Bundle." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+          <article class="product-card" data-name="LH A0 Bundle" data-category="a0" data-price="5000" data-order="4"><div class="product-art bundle-a0"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">A0</span></div><h2 class="product-art-title">LH <span>A0</span></h2><div class="product-art-bottom"><span>English bundle</span><i class="fa-solid fa-book-open"></i></div></div><div class="product-info"><h2>LH A0 Bundle</h2><p class="product-type">Bundle de inglês · nível inicial</p><span class="product-price-label">Preço</span><p class="product-price">5 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20LH%20A0%20Bundle." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+          <article class="product-card" data-name="LH A1 Bundle" data-category="a1" data-price="5000" data-order="5"><div class="product-art bundle-a1"><div class="product-art-top"><span class="mini-brand">Language Hours</span><span class="product-level">A1</span></div><h2 class="product-art-title">LH <span>A1</span></h2><div class="product-art-bottom"><span>English bundle</span><i class="fa-solid fa-book-open"></i></div></div><div class="product-info"><h2>LH A1 Bundle</h2><p class="product-type">Bundle de inglês · nível A1</p><span class="product-price-label">Preço</span><p class="product-price">5 000,00 Kz</p><a class="product-buy" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20LH%20A1%20Bundle." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Tenho interesse</a></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="contact-strip" id="contacto"><div class="container contact-inner"><div><h2>Precisas de ajuda para escolher?</h2><p>Fala com a equipa Language Hours e encontra o bundle certo para ti.</p></div><a class="btn btn-dark" href="https://wa.me/244954858822?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20para%20escolher%20um%20produto." target="_blank" rel="noopener">Contactar no WhatsApp <i class="fa-brands fa-whatsapp"></i></a></div></section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-top"><div><a class="brand footer-brand" href="home.html#inicio"><span class="brand-mark"><i class="fa-solid fa-language"></i></span><span>Language Hours</span></a><p class="footer-about">Aprende inglês de forma simples, envolvente e prática. Dá o próximo passo com a Language Hours.</p><p class="footer-badge"><i class="fa-solid fa-circle-check"></i> Aprende com confiança</p></div><div class="footer-col"><h3>Explorar</h3><a href="Curso.html">Planos e Cursos</a><a href="Sobre-nos.html">Sobre Nós</a><a href="Perguntas-frequentes.html">Perguntas Frequentes</a><a href="Produtos.html">Todos os produtos</a></div><div class="footer-col"><h3>Contacto</h3><a href="mailto:languaguehours@gmail.com"><i class="fa-regular fa-envelope"></i> languaguehours@gmail.com</a><a href="https://wa.me/244954858822" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +244 954 858 822</a></div><div class="footer-col"><h3>Siga-nos</h3><p class="footer-social-copy">Acompanha a Language Hours nas redes sociais.</p><div class="socials"><a aria-label="Instagram" href="#"><i class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a><a aria-label="YouTube" href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div><div class="footer-bottom"><span>© 2026 Language Hours. Todos os direitos reservados.</span><a href="#inicio">Feito para aprender <i class="fa-solid fa-heart"></i></a></div></div></footer>
+  <script>
+    (() => {
+      const header = document.querySelector('.header');
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const updateHeader = () => { if (header) header.classList.toggle('scrolled', window.scrollY > 24); };
+      updateHeader(); window.addEventListener('scroll', updateHeader, { passive: true });
+      const setMenu = (open) => {
+        if (!menuToggle || !navLinks) return;
+        navLinks.classList.toggle('open', open);
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+        document.body.classList.toggle('menu-open', open && window.matchMedia('(max-width: 700px)').matches);
+      };
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+        document.addEventListener('click', event => { if (navLinks.classList.contains('open') && !navLinks.contains(event.target) && !menuToggle.contains(event.target)) setMenu(false); });
+        window.addEventListener('resize', () => { if (window.innerWidth > 700) setMenu(false); });
+      }
+      const cards = Array.from(document.querySelectorAll('.product-card'));
+      const search = document.getElementById('productSearch');
+      const category = document.getElementById('categoryFilter');
+      const sort = document.getElementById('sortProducts');
+      const maxPrice = document.getElementById('maxPrice');
+      const maxPriceLabel = document.getElementById('maxPriceLabel');
+      const count = document.getElementById('resultsCount');
+      const grid = document.getElementById('productsGrid');
+      const priceBoxes = Array.from(document.querySelectorAll('input[name="price"]'));
+      const render = () => {
+        const query = search.value.trim().toLocaleLowerCase('pt');
+        const selectedCategory = category.value;
+        const allowedPrices = priceBoxes.filter(box => box.checked).map(box => Number(box.value));
+        const cap = Number(maxPrice.value);
+        maxPriceLabel.textContent = `AOA ${cap.toLocaleString('pt-PT')}`;
+        let visible = cards.filter(card => {
+          const matchesText = card.dataset.name.toLocaleLowerCase('pt').includes(query);
+          const matchesCategory = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+          const price = Number(card.dataset.price);
+          const matchesPrice = price <= cap && allowedPrices.includes(price);
+          return matchesText && matchesCategory && matchesPrice;
+        });
+        if (sort.value === 'price-asc') visible.sort((a,b) => Number(a.dataset.price) - Number(b.dataset.price));
+        else if (sort.value === 'price-desc') visible.sort((a,b) => Number(b.dataset.price) - Number(a.dataset.price));
+        else if (sort.value === 'name') visible.sort((a,b) => a.dataset.name.localeCompare(b.dataset.name, 'pt'));
+        else visible.sort((a,b) => Number(a.dataset.order) - Number(b.dataset.order));
+        cards.forEach(card => card.hidden = !visible.includes(card));
+        visible.forEach(card => grid.appendChild(card));
+        let empty = document.getElementById('emptyState');
+        if (!visible.length) {
+          if (!empty) { empty = document.createElement('div'); empty.id = 'emptyState'; empty.className = 'empty-state'; empty.innerHTML = '<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><h2>Nenhum produto encontrado</h2><p>Tenta alterar a pesquisa ou limpar os filtros.</p>'; grid.appendChild(empty); }
+        } else if (empty) empty.remove();
+        count.textContent = `${visible.length} ${visible.length === 1 ? 'produto' : 'produtos'}`;
+      };
+      [search, category, sort, maxPrice, ...priceBoxes].forEach(control => control.addEventListener('input', render));
+      document.getElementById('clearFilters').addEventListener('click', () => { search.value = ''; category.value = 'all'; sort.value = 'recommended'; maxPrice.value = '15000'; priceBoxes.forEach(box => box.checked = true); render(); });
+      render();
+    })();
+  </script>
+</body>
+</html>
