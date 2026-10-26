@@ -154,9 +154,35 @@ p { text-wrap: pretty; }
 
 .hero-slides, .hero-overlay { position: absolute; inset: 0; }
 
-.hero-slides { z-index: -2; background: var(--ink); }
 
-.hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.07); transition: opacity 1.1s ease, transform 7s ease; }
+/* Hero e slider — imagens optimizadas */
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.8s ease, transform 5s ease;
+  will-change: opacity;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 .hero-slide.is-active { opacity: 1; transform: scale(1); }
 
@@ -944,4 +970,40 @@ p { text-wrap: pretty; }
   .section-courses .courses { grid-template-columns: 1fr; }
   .section-courses .course-card { padding: 22px; }
   .section-courses .filter-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+
+/* Fotografias dos estudantes nos testemunhos */
+.person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.person-photo {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--gold);
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-card:hover .person-photo {
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(246, 192, 31, 0.25);
+}
+
+.person span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.person small {
+  opacity: 0.75;
 }
