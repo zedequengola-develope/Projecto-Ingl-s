@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard de Gestão | Languague Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/dashboard.css"><script src="js/dashboard.js" defer></script>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="../index.html"><span class="logo">LH</span><span>Languague <b>Hours</b><small>PAINEL DE GESTÃO</small></span></a>
+  <div class="nav-label">MENU PRINCIPAL</div>
+  <nav id="mainNav">
+    <a class="active" href="#resumo" data-view="resumo"><span class="nav-icon">⌂</span>Resumo</a>
+    <a href="#estudantes" data-view="estudantes"><span class="nav-icon">♙</span>Estudantes</a>
+    <a href="#cursos" data-view="cursos"><span class="nav-icon">▣</span>Cursos</a>
+    <a href="#pagamentos" data-view="pagamentos"><span class="nav-icon">＄</span>Pagamentos</a>
+  </nav>
+  <div class="side-bottom"><span class="mini-avatar">AD</span><div><b>Administrador</b><small>Gestão da escola</small></div><span class="status-dot"></span></div>
+</aside>
+<main class="main">
+  <header class="topbar"><button class="menu" id="menuBtn" aria-label="Abrir menu">☰</button><div><span class="page-label" id="pageLabel">Resumo</span><small class="date-label" id="todayLabel"></small></div><div class="top-actions"><span class="online"><i></i> Sistema activo</span><span class="avatar">AD</span></div></header>
+  <div class="content">
+    <section class="heading-row"><div><span class="eyebrow">LANGUAGUE HOURS</span><h1 id="pageTitle">Visão geral</h1><p>Acompanha a actividade da tua escola num só lugar.</p></div><button class="primary" id="addBtn">＋ <span id="addLabel">Adicionar estudante</span></button></section>
+    <section class="stats" id="stats">
+      <article class="stat-card"><span class="stat-icon gold">♙</span><div><p>Total de estudantes</p><strong id="studentCount">128</strong><small class="positive">+8 este mês</small></div></article>
+      <article class="stat-card"><span class="stat-icon blue">▣</span><div><p>Cursos activos</p><strong id="courseCount">6</strong><small>Em andamento</small></div></article>
+      <article class="stat-card"><span class="stat-icon green">＄</span><div><p>Pagamentos pendentes</p><strong id="pendingCount">12</strong><small class="attention">Precisam de atenção</small></div></article>
+    </section>
+    <section class="panel" id="mainPanel">
+      <div class="panel-head"><div><h2 id="tableTitle">Estudantes recentes</h2><p id="tableSubtitle">Resumo dos últimos registos</p></div><div class="tools"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar..." aria-label="Pesquisar"></label><button class="secondary" id="exportBtn">Exportar</button></div></div>
+      <div class="table-wrap"><table><thead id="tableHead"><tr><th>ESTUDANTE</th><th>CURSO</th><th>ESTADO</th><th>INSCRIÇÃO</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+      <div class="panel-foot"><span id="resultCount">4 registos</span><span>Dados demonstrativos</span></div>
+    </section>
+    <section class="bottom-grid" id="bottomGrid">
+      <article class="panel compact"><div class="panel-head"><div><h2>Próximas aulas</h2><p>Agenda resumida</p></div><span class="pill">Hoje</span></div>
+        <div class="lesson-row"><span class="time">14:00</span><span class="lesson-mark"></span><div><b>Conversação em inglês</b><small>Grupo A · Sala 01</small></div></div>
+        <div class="lesson-row"><span class="time">16:30</span><span class="lesson-mark gold-mark"></span><div><b>Inglês para iniciantes</b><small>Grupo B · Sala 02</small></div></div>
+      </article>
+      <article class="panel compact"><div class="panel-head"><div><h2>Acesso rápido</h2><p>Acções frequentes</p></div></div><div class="quick-actions"><button data-go="estudantes"><span>＋</span>Novo estudante</button><button data-go="cursos"><span>▣</span>Gerir cursos</button><button data-go="pagamentos"><span>＄</span>Ver pagamentos</button></div></article>
+    </section>
+    <footer>© <span id="year"></span> Languague Hours <span>· Painel de gestão</span></footer>
+  </div>
+</main>
+</div>
+<div class="modal-backdrop" id="modal" hidden><form class="modal" id="studentForm"><button type="button" class="modal-close" id="closeModal" aria-label="Fechar">×</button><span class="eyebrow">NOVO REGISTO</span><h2>Adicionar estudante</h2><label>Nome completo<input name="name" required placeholder="Nome do estudante"></label><label>Curso<select name="course"><option>Aulas Particulares</option><option>Inglês para viagens</option><option>Inglês académico</option><option>Inglês em grupo</option></select></label><label>Estado<select name="status"><option>Activo</option><option>Pendente</option></select></label><button class="primary submit" type="submit">Guardar estudante</button></form></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>
