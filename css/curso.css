@@ -781,3 +781,20 @@ body.menu-open {
   .plans-video-slide { transition: none; transform: none; }
 } 
 
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+}
+.brand b { 
+  color:var(--gold);
+}

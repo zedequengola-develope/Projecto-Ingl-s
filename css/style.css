@@ -128,7 +128,7 @@ p { text-wrap: pretty; }
 
 .brand b { color: var(--gold); }
 
-.brand-mark { width: 40px; height: 40px; display: grid; place-items: center; background: var(--gold); color: var(--ink); border-radius: 13px; font-size: 1.15rem; box-shadow: 0 5px 18px rgba(246,192,31,.2); }
+.brand-mark { width: 40px; height: 40px; display: grid; place-items: center;  color: var(--ink); border-radius: 13px; font-size: 1.15rem;  }
 
 .nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 27px); color: rgba(255,255,255,.78); font-size: .87rem; }
 
@@ -1007,3 +1007,23 @@ p { text-wrap: pretty; }
 .person small {
   opacity: 0.75;
 }
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+
+
+.brand b {
+    font-weight: 700;
+}
+
